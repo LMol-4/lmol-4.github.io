@@ -35,15 +35,18 @@
             <li>molonyluke@gmail.com</li>
         </ul>
     </div>
+    <script>
+        // Track all link clicks
+        document.addEventListener('click', function(e) {
+            var link = e.target.closest('a');
+            if (link && link.href) {
+                gtag('event', 'link_click', {
+                    'event_category': 'click',
+                    'event_label': link.href,
+                    'link_text': link.textContent.trim() || link.href
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
