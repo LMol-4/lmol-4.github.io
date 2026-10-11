@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luke Molony</title>
-    <meta name="description" content="Personal website of Luke Molony - Computer Science student, software engineer, and startup enthusiast.">
+    <meta name="description" content="Luke Molony, co-founder &amp; CTO at a stealth startup backed by Entrepreneurs First. From Dublin, Ireland.">
     
     <!-- Open Graph / Facebook / WhatsApp / iMessage / LinkedIn / X -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lukemolony.com/">
     <meta property="og:title" content="Luke Molony">
-    <meta property="og:description" content="Personal website of Luke Molony - Computer Science student, software engineer, and startup enthusiast.">
+    <meta property="og:description" content="Luke Molony, co-founder &amp; CTO at a stealth startup backed by Entrepreneurs First. From Dublin, Ireland.">
     <meta property="og:image" content="https://lukemolony.com/favicon/android-chrome-512x512.png">
     
     <link rel="stylesheet" href="css/style.css">
@@ -23,24 +23,25 @@
 </head>
 <body>
     <div id="content">
-        <h1 id="typing-title"></h1>
+        <h1 id="typing-title">Luke Molony</h1>
         
         <h3>Hey, I'm Luke.</h3>
-        <p>I'm 21 and from Dublin, Ireland. I consider myself a low-level, detail-oriented person who enjoys diving into the intricate technicalities of things. I have a strong interest in startups and software engineering, always looking to break things apart to understand how they work.</p>
-        <p>Outside of tech, I'm an outdoor enthusiast and avid rock climber, so if I'm not at my desk, you'll probably find me on a wall somewhere.</p>
+        <p>I'm 22, originally from Dublin, Ireland, and now living across London/San Francisco. I like technical problems and I like business. Both started young, messing around with computers and selling things at school. Building a company lets me do both.</p>
+        <p>Most of my time is spent at a computer, so I try to spend the rest outdoors. If I am not at my desk, you will find me camping, climbing or skiing.</p>
         
         <h3>Current Focus</h3>
         <ul>
-            <li>Moved to SF as a founder in residence at <a href="https://www.join-thebridge.com/" target="_blank" rel="noopener noreferrer">The Bridge</a>, run by <a href="https://www.joinef.com/" target="_blank" rel="noopener noreferrer">Entrepreneurs First</a>.</li>
+            <li>Co-Founder &amp; CTO currently working in stealth - Backed by <a href="https://www.joinef.com/" target="_blank" rel="noopener noreferrer">Entrepreneurs First</a>.</li>
         </ul>
         
         <h3>My Achievements</h3>
         <ul>
-            <li><strong>Founding Team at HackEurope</strong> - CTO at <a href="https://www.hackeurope.com/" target="_blank" rel="noopener noreferrer">HackEurope</a>. Joined at inception as a founding team member and built out all the technical infrastructure for the event to facilitate 1000+ attendees. Raised €350k.</li>
+            <li><strong>Founder in Residence</strong> - <a href="https://www.join-thebridge.com/" target="_blank" rel="noopener noreferrer">The Bridge</a>, Spring 26 &amp; Summer 26 in San Francisco.</li>
+            <li><strong>Founding Team at HackEurope</strong> - CTO at <a href="https://www.hackeurope.com/" target="_blank" rel="noopener noreferrer">HackEurope</a>. Joined at inception as a founding team member and built out all the technical infrastructure for the event to facilitate 1000+ attendees. Raised ~$350k.</li>
             <li><strong>SIG Co-Op</strong> - Developer on the electronic options trading team at <a href="https://www.sig.com/" target="_blank" rel="noopener noreferrer">Susquehanna</a>.</li>
             <li><strong>Publicit Co-Founder</strong> - Built the <a href="https://www.publicit.com/" target="_blank" rel="noopener noreferrer">Publicit</a> platform. Came 2nd place in Spains largest startup competition.</li>
             <li><strong>SWE at Evervault</strong> - Sole Intern at <a href="https://evervault.com/" target="_blank" rel="noopener noreferrer">Evervault</a>, a Sequoia backed information and payment security startup.</li>
-            <li><strong>Center For Talented Youth</strong> - Studied mathematics in an early-entrance university program for high-ability students from across Europe (top 5th percentile).</li>
+            <li><strong>Center For Talented Youth</strong> - Studied mathematics in an early-entrance university program.</li>
         </ul>
         <h3>Links</h3>
         <ul>
@@ -54,9 +55,15 @@
         // typing animation
         const titleElement = document.getElementById('typing-title');
         const titleText = 'Luke Molony';
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
         let charIndex = 0;
         
         function typeTitle() {
+            if (reducedMotion.matches) {
+                titleElement.textContent = titleText;
+                return;
+            }
+
             if (charIndex < titleText.length) {
                 titleElement.textContent = titleText.substring(0, charIndex + 1) + '|';
                 charIndex++;
@@ -69,7 +76,9 @@
         
         // start on page load
         window.addEventListener('load', function() {
-            setTimeout(typeTitle, 300);
+            if (!reducedMotion.matches) {
+                setTimeout(typeTitle, 300);
+            }
         });
         
         // Track all link clicks
